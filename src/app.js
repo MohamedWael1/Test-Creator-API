@@ -15,7 +15,8 @@ app.use("/api/users", userRouter);
 app.use("/api/quizzes", quizRouter);
 
 app.use((err, req, res, next) => {
-    res.status(err.statusCode).send({ message: err.message })
+    console.log(err);
+    res.status(err.statusCode || 500).send({ message: err.message })
 });
 
 const PORT = process.env.PORT || 8000;
